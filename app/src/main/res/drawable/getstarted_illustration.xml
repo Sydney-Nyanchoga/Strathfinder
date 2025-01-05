@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="400dp"
+    android:viewportWidth="400"
+    android:viewportHeight="400">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#F5F7FA"
+        android:pathData="M200,200 m-150,0 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0" />
+
+    <!-- Smartphone outline -->
+    <path
+        android:fillColor="#002B5C"
+        android:pathData="M150,100 h100 a20,20 0 0 1 20,20 v160 a20,20 0 0 1 -20,20 h-100 a20,20 0 0 1 -20,-20 v-160 a20,20 0 0 1 20,-20" />
+
+    <!-- Screen -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M155,105 h90 a18,18 0 0 1 18,18 v154 a18,18 0 0 1 -18,18 h-90 a18,18 0 0 1 -18,-18 v-154 a18,18 0 0 1 18,-18" />
+
+    <!-- Map area -->
+    <path
+        android:fillColor="#F5F7FA"
+        android:pathData="M165,115 h70 a5,5 0 0 1 5,5 v140 a5,5 0 0 1 -5,5 h-70 a5,5 0 0 1 -5,-5 v-140 a5,5 0 0 1 5,-5" />
+
+    <!-- Navigation path -->
+    <path
+        android:strokeColor="#CD9C3B"
+        android:strokeWidth="3"
+        android:pathData="M165,180 Q200,140 235,180" />
+
+    <!-- Navigation points -->
+    <path
+        android:fillColor="#002B5C"
+        android:pathData="M165,180 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0
+                         M235,180 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0" />
+
+    <!-- Action button -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M175,275 h50 a5,5 0 0 1 5,5 v5 a5,5 0 0 1 -5,5 h-50 a5,5 0 0 1 -5,-5 v-5 a5,5 0 0 1 5,-5" />
+</vector>

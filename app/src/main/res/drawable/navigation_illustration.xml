@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="400dp"
+    android:viewportWidth="400"
+    android:viewportHeight="400">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#F5F7FA"
+        android:pathData="M200,200 m-150,0 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0" />
+
+    <!-- Navigation path -->
+    <path
+        android:strokeColor="#002B5C"
+        android:strokeWidth="8"
+        android:strokeLineCap="round"
+        android:pathData="M100,300 Q150,200 200,180 Q250,160 300,100" />
+
+    <!-- Start point -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M100,300 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0" />
+
+    <!-- Waypoints -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M200,180 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
+
+    <!-- End point/Destination marker -->
+    <path
+        android:fillColor="#CD9C3B"
+        android:pathData="M300,70 L320,100 L300,90 L280,100 Z" />
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M300,70 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" />
+
+    <!-- Building silhouettes -->
+    <path
+        android:fillColor="#002B5C"
+        android:fillAlpha="0.2"
+        android:pathData="M150,250 h40 v50 h-40 Z
+                         M250,200 h40 v100 h-40 Z
+                         M200,220 h30 v80 h-30 Z" />
+</vector>

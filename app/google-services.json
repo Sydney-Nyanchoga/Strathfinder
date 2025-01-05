@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "365919799731",
+    "project_id": "strathfinderapp",
+    "storage_bucket": "strathfinderapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365919799731:android:4687d3db71efce22d323c6",
+        "android_client_info": {
+          "package_name": "com.example.strathfinderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365919799731-f8ifbadb8kb5s08volo8jcaa4qceiot2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.strathfinderapp",
+            "certificate_hash": "ecd1c3d0ef28b95a02812319bc229442da511d42"
+          }
+        },
+        {
+          "client_id": "365919799731-eh1enra6js93kl8dj2kdtq52ja7l5a64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7DxOYR0OqYNd7MRkJR70zhX5FlF6SeP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365919799731-eh1enra6js93kl8dj2kdtq52ja7l5a64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
