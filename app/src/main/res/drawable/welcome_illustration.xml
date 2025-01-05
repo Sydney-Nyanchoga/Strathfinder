@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp"
+    android:height="400dp"
+    android:viewportWidth="400"
+    android:viewportHeight="400">
+
+    <!-- Background shape -->
+    <path
+        android:fillColor="#253AB1"
+        android:pathData="M200,200 m-150,0 a150,150 0 1,0 300,0 a150,150 0 1,0 -300,0" />
+
+    <!-- Strathmore Building silhouette -->
+    <path
+        android:fillColor="#FAF6F6"
+        android:pathData="M120,180 L200,120 L280,180 L280,280 L120,280 Z" />
+
+    <!-- Windows -->
+    <path
+        android:fillColor="#CD9C3B"
+        android:pathData="M140,200 h20 v30 h-20 Z
+                         M170,200 h20 v30 h-20 Z
+                         M200,200 h20 v30 h-20 Z
+                         M230,200 h20 v30 h-20 Z" />
+
+    <!-- Door -->
+    <path
+        android:fillColor="#CD9C3B"
+        android:pathData="M190,240 h20 v40 h-20 Z" />
+
+    <!-- Pin/Location marker -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M200,150 L210,170 L200,165 L190,170 Z" />
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M200,150 m-10,0 a10,10 0 1,0 20,0 a10,10 0 1,0 -20,0" />
+
+    <!-- Decorative elements -->
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M140,140 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0
+                         M260,140 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0" />
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M160,120 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0
+                         M240,120 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+</vector>
