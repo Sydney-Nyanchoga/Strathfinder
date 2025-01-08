@@ -16,6 +16,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
+    // Initialize view binding and Firebase components
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -23,14 +24,15 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Set up view binding
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize Firebase Auth
+        // Initialize Firebase components
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
-        // Configure Google Sign In
+        // Configure Google Sign In with your web client ID
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -38,11 +40,12 @@ class RegisterActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        // Set up all click listeners
         setupClickListeners()
     }
 
     private fun setupClickListeners() {
-        // Regular Sign Up button click listener
+        // Handle regular email/password registration
         binding.btnSignUp.setOnClickListener {
             val firstName = binding.etFirstName.text.toString().trim()
             val lastName = binding.etLastName.text.toString().trim()
@@ -55,14 +58,20 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        // Google Sign In button click listener
+        // Handle Google Sign In
         binding.btnGoogleSignIn.setOnClickListener {
             signInWithGoogle()
         }
 
-        // Back button click listener
+        // Handle navigation back
         binding.btnBack.setOnClickListener {
             onBackPressed()
+        }
+
+        // Navigate to Login Activity when "Log in" is clicked
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 
@@ -73,14 +82,17 @@ class RegisterActivity : AppCompatActivity() {
         password: String,
         confirmPassword: String
     ): Boolean {
+        // Validate first name
         if (firstName.isEmpty()) {
             binding.etFirstName.error = "First name is required"
             return false
         }
+        // Validate last name
         if (lastName.isEmpty()) {
             binding.etLastName.error = "Last name is required"
             return false
         }
+        // Validate email
         if (email.isEmpty()) {
             binding.etEmail.error = "Email is required"
             return false
@@ -89,6 +101,7 @@ class RegisterActivity : AppCompatActivity() {
             binding.etEmail.error = "Please enter a valid email"
             return false
         }
+        // Validate password
         if (password.isEmpty()) {
             binding.etPassword.error = "Password is required"
             return false
@@ -97,6 +110,7 @@ class RegisterActivity : AppCompatActivity() {
             binding.etPassword.error = "Password must be at least 6 characters"
             return false
         }
+        // Validate password confirmation
         if (confirmPassword.isEmpty()) {
             binding.etConfirmPassword.error = "Please confirm your password"
             return false
@@ -108,25 +122,27 @@ class RegisterActivity : AppCompatActivity() {
         return true
     }
 
-
     private fun registerUser(firstName: String, lastName: String, email: String, password: String) {
+        // Create user account with email and password
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Save additional user details to Realtime Database
+                    // Get current user and save additional details to database
                     val user = auth.currentUser
                     val userRef = database.reference.child("users").child(user?.uid ?: "")
 
+                    // Create user data map
                     val userData = hashMapOf(
                         "firstName" to firstName,
                         "lastName" to lastName,
                         "email" to email
                     )
 
+                    // Save user data to database
                     userRef.setValue(userData)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Successfully registered!", Toast.LENGTH_SHORT).show()
-                            // Navigate to MainActivity or HomeActivity
+                            // Navigate to main screen
                             startActivity(Intent(this, MainActivity::class.java))
                             finish()
                         }
@@ -134,18 +150,22 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                         }
                 } else {
+                    // Show error if registration fails
                     Toast.makeText(this, "Registration failed: ${task.exception?.message}",
                         Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
+    // Set up activity result launcher for Google Sign In
     private val signInLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
+            // Get Google Sign In account
             val account = task.getResult(ApiException::class.java)
+            // Authenticate with Firebase using Google credentials
             firebaseAuthWithGoogle(account.idToken!!)
         } catch (e: ApiException) {
             Toast.makeText(this, "Google sign in failed: ${e.message}",
@@ -154,25 +174,29 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun signInWithGoogle() {
+        // Launch Google Sign In intent
         val signInIntent = googleSignInClient.signInIntent
         signInLauncher.launch(signInIntent)
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
+        // Create credentials from Google ID token
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    // Get user and save Google account details
                     val user = auth.currentUser
-                    // Save Google user details to Realtime Database
                     val userRef = database.reference.child("users").child(user?.uid ?: "")
 
+                    // Create user data map from Google account info
                     val userData = hashMapOf(
                         "firstName" to user?.displayName?.split(" ")?.get(0),
                         "lastName" to user?.displayName?.split(" ")?.getOrNull(1),
                         "email" to user?.email
                     )
 
+                    // Save Google user data to database
                     userRef.setValue(userData)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Successfully signed in with Google!",

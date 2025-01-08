@@ -10,17 +10,17 @@
         android:layout_height="wrap_content">
 
         <!-- Back Button -->
+
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="Back"
-            app:tint="@color/white" />
+
+             />
 
         <!-- Registration Container -->
         <androidx.cardview.widget.CardView
@@ -46,9 +46,21 @@
                     android:layout_height="120dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="24dp"
-                    android:src="@drawable/app_logo"
+                    android:src="@drawable/register_illustration"
                     android:contentDescription="Registration" />
-
+                <TextView
+                    android:id="@+id/create"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create Your Account"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
                 <!-- First Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -133,6 +145,7 @@
                     android:layout_height="56dp"
                     android:layout_marginBottom="24dp"
                     android:text="Sign Up"
+                    android:backgroundTint="@color/primary_light"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     app:cornerRadius="28dp" />
@@ -166,25 +179,29 @@
                 </LinearLayout>
 
                 <!-- Social Sign In Buttons -->
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoogleSignIn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_marginBottom="24dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:text="Sign up with Google"
+                    android:textColor="@color/black"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_google"
+                    app:iconGravity="textStart"
+                    app:iconSize="24dp"
+                    app:iconTint="@null"
+                    app:iconPadding="12dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="24dp"
+                    android:backgroundTint="@color/white"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/divider"
+                    app:cornerRadius="28dp"
+                    android:elevation="2dp" />
 
-                    <ImageButton
-                        android:id="@+id/btnGoogleSignIn"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/ic_google"
-                        android:contentDescription="Sign in with Google" />
-
-
-                </LinearLayout>
-
-                <!-- Login Link -->
+                <!-- Replace the Login Link section with this: -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,17 +211,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Already have an account? " />
+                        android:text="Already have an account? "
+                        android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/tvLogin"
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Log in"
                         android:textColor="@color/primary"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:background="@color/primary_light"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="14sp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:padding="4dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        style="@style/Widget.MaterialComponents.Button.TextButton" />
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
