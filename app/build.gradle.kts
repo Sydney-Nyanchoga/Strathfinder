@@ -83,7 +83,7 @@ dependencies {
     implementation ("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation ("com.google.firebase:firebase-auth-ktx:23.1.0")
     implementation ("com.google.android.gms:play-services-maps:19.0.0")
-    implementation("com.mappedin.sdk:mappedin:5.0.4")
+
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation ("com.google.android.material:material:1.12.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
@@ -98,13 +98,15 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:21.3.0")
     implementation ("androidx.appcompat:appcompat:1.7.0")
     implementation ("com.google.android.gms:play-services-identity:18.1.0")
-
     // Firebase dependencies
     // Import the BoM for the Firebase platform
     implementation (platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation ("com.google.firebase:firebase-auth-ktx")
     implementation ("com.google.firebase:firebase-firestore-ktx")
-
-
+    // MappedIn
+    // implementation("com.mappedin.sdk:mappedin:5.5.0")
+    // resources
+    implementation (files("libs/mappedin-5.5.0.aar") )
+    implementation("androidx.webkit:webkit:1.12.1")
 
 }

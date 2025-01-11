@@ -1,8 +1,8 @@
 package com.example.strathfinderapp.activities
 
-
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.strathfinderapp.R
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            setDisplayShowTitleEnabled(false)  // Hide default title
+            setDisplayShowTitleEnabled(false)
         }
     }
 
@@ -91,37 +91,50 @@ class MainActivity : AppCompatActivity() {
         )
 
         val adapter = MenuAdapter(menuItems) { menuItem ->
-            try {
-                startActivity(Intent(this, menuItem.activityClass))
-            } catch (e: Exception) {
-                // Handle any navigation errors
-                showErrorDialog(
-                    "This feature is coming soon!",
-                    "We're working hard to bring you this feature. Please check back later."
-                )
+            when (menuItem.id) {
+                1 -> {
+                    // Handle Campus Map click specifically
+                    try {
+                        startActivity(Intent(this, MapActivity::class.java))
+                        Toast.makeText(this, "Loading campus map...", Toast.LENGTH_SHORT).show()
+                    } catch (e: Exception) {
+                        showErrorDialog(
+                            "Map Error",
+                            "Unable to load the map. Please check your internet connection and try again."
+                        )
+                    }
+                }
+                else -> {
+                    // Handle other menu items
+                    try {
+                        startActivity(Intent(this, menuItem.activityClass))
+                    } catch (e: Exception) {
+                        showErrorDialog(
+                            "Coming Soon",
+                            "We're working hard to bring you this feature. Please check back later."
+                        )
+                    }
+                }
             }
         }
 
         binding.rvMenu.apply {
-            layoutManager = GridLayoutManager(this@MainActivity, 2) // 2 columns
+            layoutManager = GridLayoutManager(this@MainActivity, 2)
             this.adapter = adapter
         }
     }
 
     private fun showErrorDialog(title: String, message: String) {
-        val builder = MaterialAlertDialogBuilder(this)
-        builder.apply {
-            setTitle(title)
-            setMessage(message)
-            setPositiveButton("OK") { dialog, _ ->
+        MaterialAlertDialogBuilder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
             }
-            show()
-        }
+            .show()
     }
 
     override fun onBackPressed() {
-        // Show exit confirmation dialog
         MaterialAlertDialogBuilder(this)
             .setTitle("Exit App")
             .setMessage("Are you sure you want to exit?")
@@ -130,9 +143,5 @@ class MainActivity : AppCompatActivity() {
             }
             .setNegativeButton("No", null)
             .show()
-    }
-
-    companion object {
-        private const val TAG = "MainActivity"
     }
 }
