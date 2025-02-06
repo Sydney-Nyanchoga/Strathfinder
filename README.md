@@ -5,6 +5,8 @@ A comprehensive mobile application for campus navigation
 ## Overview
 StrathFinder is a mobile-based application designed to simplify campus navigation at Strathmore University. The app aims to help new students, staff, and visitors navigate the university's expansive layout effectively, reducing confusion and improving the overall campus experience.
 
+![Image Alt]([image_url](https://github.com/Sydney-Nyanchoga/Strathfinder/blob/e6e342bf5a63d005ce281858ebe716dea35af7da/Screenshot%202025-01-10%20153601.png))
+
 ## Features
 - **Interactive Campus Map**: Detailed maps of the campus, including building layouts, pathways, and points of interest
 - **Real-time Navigation**: Step-by-step directions to help users reach their destination
